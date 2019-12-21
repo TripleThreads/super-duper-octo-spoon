@@ -2,13 +2,19 @@ package main
 
 import "fmt"
 
-func fib(num int) int {
-	if num <= 1 {
-		return num
+func fibonacci(num int) {
+	prev := 1
+	next := 1
+	current := 0
+	fmt.Printf("%d %d ", prev, next)
+	for i := 1; i < num; i++ {
+		current = next
+		next = next + prev
+		prev = current
+		fmt.Printf("%d ", next)
 	}
-	return fib(num-1) + fib(num-2)
 }
 
 func main() {
-	fmt.Println(fib(4))
+	fibonacci(10)
 }

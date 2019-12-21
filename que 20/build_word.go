@@ -34,14 +34,14 @@ func buildWord(word string, array []string) int {
 			removed := stack.Pop()
 			index -= len(removed)
 			removedWords = append(removedWords, removed)
-		}
-		if !pushed && stack.Size == 0 {
+
+		} else if !pushed && stack.Size == 0 {
 			return 0
 		}
 	}
 	return stack.Size
 }
 func main() {
-	index := buildWord("buildword", []string{"buil", "dwor", "bu", "ild", "wo", "rd"})
-	println(index)
+	count := buildWord("buildword", []string{"buil", "dwor", "bu", "ild", "wo", "rd"})
+	println(count)
 }
