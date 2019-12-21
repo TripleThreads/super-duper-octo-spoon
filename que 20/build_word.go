@@ -1,13 +1,14 @@
 package main
 
 import (
+	stack "awesomeProject"
 	"strings"
 )
 
 func buildWord(word string, array []string) int {
 
-	stack := new(Stack)
-	stack.initialize(len(array))
+	wordStack := new(stack.Stack)
+	wordStack.Initialize(len(array))
 	index := 0
 	var removedWords []string
 
@@ -25,21 +26,21 @@ func buildWord(word string, array []string) int {
 				}
 			}
 			if strings.Index(word, segment) == index && !itsRemoved {
-				stack.Push(segment)
+				wordStack.Push(segment)
 				index += len(segment)
 				pushed = true
 			}
 		}
-		if !pushed && stack.Size > 0 {
-			removed := stack.Pop()
+		if !pushed && wordStack.Size > 0 {
+			removed := wordStack.Pop()
 			index -= len(removed)
 			removedWords = append(removedWords, removed)
 
-		} else if !pushed && stack.Size == 0 {
+		} else if !pushed && wordStack.Size == 0 {
 			return 0
 		}
 	}
-	return stack.Size
+	return wordStack.Size
 }
 func main() {
 	count := buildWord("buildword", []string{"buil", "dwor", "bu", "ild", "wo", "rd"})
