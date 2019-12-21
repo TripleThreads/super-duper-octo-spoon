@@ -4,13 +4,13 @@ import (
 	"fmt"
 )
 
-type item struct {
+type node struct {
 	Value string
-	Next  *item
+	Next  *node
 }
 
 type Stack struct {
-	Top     *item
+	Top     *node
 	Size    int
 	maxSize int
 }
@@ -24,7 +24,7 @@ func (stack *Stack) Push(value string) {
 		fmt.Println("Stack overflow")
 		return
 	}
-	stack.Top = &item{
+	stack.Top = &node{
 		Value: value,
 		Next:  stack.Top,
 	}

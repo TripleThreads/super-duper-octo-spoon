@@ -4,9 +4,10 @@ import (
 	"math/big"
 )
 
-func square(n int64, precision int64) int {
+func squareRoot(n int64, precision int64) int {
 
 	limit := new(big.Int).Exp(big.NewInt(10), big.NewInt(precision+1), nil)
+
 	a := big.NewInt(5 * n)
 	b := big.NewInt(5)
 	five := big.NewInt(5)
@@ -37,5 +38,5 @@ func square(n int64, precision int64) int {
 }
 
 func main() {
-	println(square(2, 1000))
+	println(squareRoot(2, 1000))
 }
